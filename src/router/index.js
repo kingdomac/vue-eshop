@@ -148,7 +148,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  let title = `${import.meta.env.VUE_APP_TITLE}`;
+  let title = import.meta.env.VUE_APP_TITLE;
   if (to.meta.title) {
     title += ` - ${to.meta.title}`;
   }

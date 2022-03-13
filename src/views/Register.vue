@@ -106,7 +106,7 @@ export default {
       address: "",
       password: "",
       password_confirmation: "",
-      url: process.env.VUE_APP_REDIRECT_URL,
+      url: import.meta.env.VUE_APP_REDIRECT_URL,
       errors: [],
       isSubmitted: false,
     };
