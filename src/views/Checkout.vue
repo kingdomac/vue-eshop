@@ -42,7 +42,7 @@
        login for better experience
       </router-link>
     </div>
-
+    
     <div class="payment-info">
       <form @submit.prevent="handleCheckout" class="form-container form-checkout">
           <div class="form-section">
@@ -262,12 +262,16 @@ export default {
           timeout: 3000,
         });
       } catch (error) {
-        if (error.response.data.errors.payment) {
+        if (error.response.data.errors?.payment) {
           toast.error("Payment process failed!", {
             timeout: 5000,
           });
         } else if (error.response.data.errors) {
           orderState.errors = error.response.data.errors;
+        } else if (error.response.data.error) {
+          toast.error(error.response.data.error, {
+            timeout: 7000,
+          });
         }
       } finally {
         orderState.isSubmitted = false;
